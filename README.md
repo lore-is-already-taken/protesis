@@ -5,7 +5,7 @@
 
 This is a Linux interface that receives and analyzes data from a USB device and sends it via WebSocket.
 
-**Please read this README (gosh) before running your program**
+**Please read this README before running your program**
 
 
 ## How to run?
