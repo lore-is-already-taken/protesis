@@ -1,8 +1,8 @@
-from app.init import init_service
+from app.ui.menu import menu
 
 
 def main():
-    init_service()
+    menu()
 
 
 if __name__ == "__main__":
