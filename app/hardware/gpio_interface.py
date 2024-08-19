@@ -16,8 +16,10 @@ def get_interface():
         channel = AnalogIn(ads, ADS.P0)
 
         return channel
+
     except Exception as e:
         raise e
+
     finally:
         pass
 
