@@ -8,7 +8,7 @@ from adafruit_ads1x15.analog_in import AnalogIn
 
 def init_service():
 
-    # initialize the I2S interface
+    # initialize the I2C interface
     i2c = busio.I2C(board.SCL, board.SDA)
 
     # creating ADS1115 object
