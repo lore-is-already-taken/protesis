@@ -185,4 +185,8 @@ pyrightconfig.json
 pyvenv.cfg
 pip-selfcheck.json
 
+
+## training data
+data/
+
 # End of https://www.toptal.com/developers/gitignore/api/venv,python
