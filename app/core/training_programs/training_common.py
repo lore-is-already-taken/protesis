@@ -1,47 +1,22 @@
+import threading
 import time
 from datetime import datetime
 
-import threading
-from adafruit_ads1x15.analog_in import AnalogIn
 import pwn
+from adafruit_ads1x15.analog_in import AnalogIn
 from pwnlib.log import Progress
 
+from app.hardware.gpio_interface import get_interface
 from app.utils.text_directions import Files
 
 
-def start_training(interface: AnalogIn, main_file_name: str):
+def start_training(exercises, instructions, main_file_name):
     save_data_route = Files.fileDirection.value + create_file_name(main_file_name)
     print(
         "Realiza los ejercicios de forma calmada y tomate tu tiempo para transisionar entre posiciones"
     )
-    instructions = {
-        "relaxed_hand": "relaja tu mano y los musculos del brazo testeado",
-        "fist_formation": "Cierra lentamente tu mano en un puño. Mantén la muñeca en una posición neutral.",
-        "fist_hold": "Mantén la posición del puño, manteniendo todos los dedos y el pulgar firmemente cerrados.",
-        "fist_release": "Abre lentamente tu mano, comenzando por liberar el pulgar y luego estirando los dedos para formar una palma abierta.",
-        "open_palm": "Mantén tu mano en una posición de palma abierta, con los dedos y el pulgar extendidos pero relajados.",
-        "fist_to_open_palm": "Haz la transición de un puño a una palma abierta abriendo lentamente los dedos y estirando la mano.",
-        "open_palm_to_fist": "Haz la transición de una palma abierta a un puño cerrando lentamente los dedos y el pulgar para formar un puño firme.",
-    }
+    interface = get_interface()
 
-    exercises = [
-        {
-            "name": "Relaxed Hand",
-            "instructions": "relaxed_hand",
-            "duration": 5,
-        },
-        {
-            "name": "Transition to Fist",
-            "instructions": "fist_formation",
-            "duration": 5,
-        },
-        {"name": "Fist", "instructions": "fist_hold", "duration": 10},
-        {
-            "name": "Transition to Relaxed Hand",
-            "instructions": "fist_to_open_palm",
-            "duration": 5,
-        },
-    ]
     train_data = pwn.log.progress("Info")
     train_data.status("Vamos a empezar!")
     time.sleep(3)
