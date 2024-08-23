@@ -1,5 +1,8 @@
+import asyncio
+
 from app.core.training_programs.fist_training import fistTrain
 from app.core.training_programs.index_Training import indexTrain
+from app.core.websocket.websocket_handler import send_data
 from app.utils.reader import get_content
 from app.utils.text_directions import Files
 from resources.ascii import projectName
@@ -15,3 +18,5 @@ def menu():
         fistTrain()
     elif user_response == "2":
         indexTrain()
+    elif user_response == "3":
+        asyncio.run(send_data())

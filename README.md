@@ -21,7 +21,7 @@ Then activate it. On linux,use:
 ```
 Now, Install the dependencies:
 ```
-pip install -r requirements
+pip install -r dependencies.txt
 ```
 You can now start editing or execute the program.
 
