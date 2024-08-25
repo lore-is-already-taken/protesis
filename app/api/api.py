@@ -30,13 +30,8 @@ class hand_Data(BaseModel):
     data: str
 
 
-# @app.post("/data")
-# def data(recieve_data: hand_Data):
-@app.get("/data")
-def data():
-    # @app.get("/data")
-    # def data():
-    # Process the incoming data
+@app.get("/reset")
+def reset():
     data = """[
     {"engine": "upper_thumb", "value": 0},
     {"engine": "lower_thumb", "value": 0},
@@ -44,8 +39,35 @@ def data():
     {"engine": "middle_finger", "value": 0},
     {"engine": "ring_finger", "value": 0}
     ]"""
-    # hand_handler(json.loads(recieve_data.data))
     hand_handler(json.loads(data))
+
+
+@app.get("/test")
+def test():
+    data = """[
+    {"engine": "upper_thumb", "value": 1},
+    {"engine": "lower_thumb", "value": 1},
+    {"engine": "index_finger", "value": 1},
+    {"engine": "middle_finger", "value": 1},
+    {"engine": "ring_finger", "value": 1}
+    ]"""
+    hand_handler(json.loads(data))
+
+
+@app.post("/data")
+def data(recieve_data: hand_Data):
+    # @app.get("/data")
+    # def data():
+    # Process the incoming data
+    # data = """[
+    # {"engine": "upper_thumb", "value": 0},
+    # {"engine": "lower_thumb", "value": 0},
+    # {"engine": "index_finger", "value": 0},
+    # {"engine": "middle_finger", "value": 0},
+    # {"engine": "ring_finger", "value": 0}
+    # ]"""
+    hand_handler(json.loads(recieve_data.data))
+    # hand_handler(json.loads(data))
     return {"message": data}
 
 

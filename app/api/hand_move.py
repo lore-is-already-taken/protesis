@@ -28,12 +28,35 @@ def hand_handler(instructions):
 
     try:
         for i in instructions:
+            if i["engine"] == index_finger or i["engine"] == middle_finger:
+                gpio_handler = PinHandler(hand[i["engine"]])
+                if i["value"] == 0:
+                    gpio_handler.set_servo_position(90)
+
+                elif i["value"] == 1:
+                    gpio_handler.set_servo_position(0)
+                gpio_handler.stop()
+
+            if i["engine"] == ring_finger:
+                gpio_handler = PinHandler(hand[i["engine"]])
+
+                if i["value"] == 0:
+                    gpio_handler.set_servo_position(170)
+
+                elif i["value"] == 1:
+                    gpio_handler.set_servo_position(90)
+
+                gpio_handler.stop()
+
             if i["engine"] != "pinky_finger":
                 gpio_handler = PinHandler(hand[i["engine"]])
-                asyncio.run(gpio_handler.set_servo_position(parse_data(i["value"])))
+                gpio_handler.set_servo_position(parse_data(i["value"]))
+
+                gpio_handler.stop()
 
     except Exception as e:
         raise e
+
     # print(instructions)
 
 
