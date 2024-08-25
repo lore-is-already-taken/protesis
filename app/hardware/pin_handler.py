@@ -1,5 +1,6 @@
-import RPi.GPIO as GPIO
 import time
+
+import RPi.GPIO as GPIO
 
 
 class PinHandler:
@@ -11,7 +12,7 @@ class PinHandler:
         self.pwm = GPIO.PWM(pin, hz)
         self.pwm.start(0)
 
-    def set_servo_position(self, angle):
+    async def set_servo_position(self, angle):
         try:
             duty_cycle = self._angle_to_duty_cycle(angle)
             self.pwm.ChangeDutyCycle(duty_cycle)
