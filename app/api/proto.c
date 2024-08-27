@@ -47,9 +47,7 @@ int move(int pin[], int angle[]){
     gpioSetMode(pin[3],PI_OUTPUT);
     gpioSetMode(pin[4],PI_OUTPUT);
     gpioSetMode(pin[5],PI_OUTPUT);
-    printf("All pins defined\n");
 
-    printf("Initiating motions\n");
     gpioPWM(pin[0],angle[0]);
     gpioPWM(pin[1],angle[1]);
     gpioPWM(pin[2],angle[2]);
@@ -57,6 +55,9 @@ int move(int pin[], int angle[]){
     gpioPWM(pin[4],angle[4]);
     gpioPWM(pin[5],angle[5]);
 
-    printf("Done\n");
     return 0;
+}
+
+float percentage(int angle){
+    return (angle/180) + 1;
 }
