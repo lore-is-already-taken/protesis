@@ -34,3 +34,29 @@ int main(int argc, char *argv[]){
     printf("Done!\n");
     return 0;
 }
+
+int move(int pin[], int angle[]){
+    if(gpioInitialise()<0){
+        printf("Error while initializating the board\n");
+        return 1;
+    }
+
+    gpioSetMode(pin[0],PI_OUTPUT);
+    gpioSetMode(pin[1],PI_OUTPUT);
+    gpioSetMode(pin[2],PI_OUTPUT);
+    gpioSetMode(pin[3],PI_OUTPUT);
+    gpioSetMode(pin[4],PI_OUTPUT);
+    gpioSetMode(pin[5],PI_OUTPUT);
+    printf("All pins defined\n");
+
+    printf("Initiating motions\n");
+    gpioPWM(pin[0],angle[0]);
+    gpioPWM(pin[1],angle[1]);
+    gpioPWM(pin[2],angle[2]);
+    gpioPWM(pin[3],angle[3]);
+    gpioPWM(pin[4],angle[4]);
+    gpioPWM(pin[5],angle[5]);
+
+    printf("Done\n");
+    return 0;
+}
