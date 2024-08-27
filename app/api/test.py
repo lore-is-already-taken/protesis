@@ -1,6 +1,6 @@
 import ctypes
 
-# the .so file is created with>
+# the .so file is created with
 # gcc proto.c -o proto.so -lpigpio -pthread -shared 
 
 file = "/home/klithik/protesis/app/api/proto.so"
