@@ -2,9 +2,13 @@
 #include <pigpio.h>
 
 int move(int pin[], int angle[]){
-    if(gpioInitialise()<0){
-        return 1;
-    }
+    /*
+     * This function is used to execute a hand motion.
+     * It recieves 12 inputs in 2 int arrays:
+     * pin[] contains the pin number for each servo
+     * angle[] contains the angle of movement desired
+     */
+    if(gpioInitialise()<0){return 1;}
 
     gpioSetMode(pin[0],PI_OUTPUT);
     gpioSetMode(pin[1],PI_OUTPUT);
@@ -31,5 +35,12 @@ int move(int pin[], int angle[]){
 }
 
 float percentage(int angle){
+    // Given the allowed servo input, wich should be
+    // and ammount between 1 and 2 ms, calculate
+    // this number having the desired movement angle.
+    //
+    // For this, divides 1 ms in 180 parts, multiplies
+    // it by the desired angle, and adds 1 ms wich is the
+    // base ms.
     return (angle/180) + 1;
 }
