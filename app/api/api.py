@@ -1,15 +1,12 @@
-from typing import Dict, List
 import json
-from fastapi import FastAPI
+from typing import Dict, List
+
 import uvicorn
-from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-import uvicorn
-from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.hand_move import hand_handler
-
 
 app = FastAPI()
 
@@ -33,12 +30,12 @@ class hand_Data(BaseModel):
 @app.get("/reset")
 def reset():
     data = """[
-    {"engine": "upper_thumb", "value": 0},
-    {"engine": "lower_thumb", "value": 0},
-    {"engine": "index_finger", "value": 0},
-    {"engine": "middle_finger", "value": 0},
-    {"engine": "ring_finger", "value": 0}
-    ]"""
+        {"engine": "upper_thumb", "value": 0},
+        {"engine": "lower_thumb", "value": 0},
+        {"engine": "index_finger", "value": 0},
+        {"engine": "middle_finger", "value": 0},
+        {"engine": "ring_finger", "value": 0}
+        ]"""
     hand_handler(json.loads(data))
 
 
