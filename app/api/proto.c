@@ -42,5 +42,5 @@ float percentage(int angle){
     // For this, divides 1 ms in 180 parts, multiplies
     // it by the desired angle, and adds 1 ms wich is the
     // base ms.
-    return (angle/180) + 1;
+    return (angle/180.0) + 1;
 }
